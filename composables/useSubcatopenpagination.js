@@ -1,0 +1,85 @@
+import { ref, computed } from 'vue'
+import { useRuntimeConfig, useNuxtApp } from '#imports'
+
+export function useSubcatopenpagination() {
+  const { $api } = useNuxtApp()
+  const apiUrl = useRuntimeConfig().public.apiBaseUrl
+
+  const subcats = ref([])
+  const currentPage = ref(1)
+  const lastPage = ref(1)
+  const perPage = ref(9)
+  const totalSubcats = ref(0)
+  const loadingsubcats = ref(true) 
+  
+  
+  const fetchSubcats = async (catid = null, page = 1) => {
+	  
+    try {
+      // Build the query parameters
+      const params = {
+        page: page,
+        per_page: perPage.value
+      }
+	  let response = ''
+      // Include catid if provided
+      if (catid > 0) {
+        params.catid = catid
+		catid = catid
+		response = await $api.get(`${apiUrl}/subcat/view/${catid}`, { params })
+      }
+	  else
+	  {
+		catid =''
+        response = await $api.get(`${apiUrl}/subcat/view`, { params })
+	  }
+		console.log('subcat response ' + response)
+      // Update the state with response data
+      subcats.value = response.data.subcats.data
+	  console.log('subcat response 2' + response.data.subcats.data)
+      currentPage.value = response.data.subcats.current_page
+      lastPage.value = response.data.subcats.last_page
+      totalSubcats.value = response.data.subcats.total
+    } 
+	catch (error) 
+	{
+      console.error('Error fetching subcategories:', error.response ? error.response.data : error.message)
+    }
+		
+	finally 
+	{
+		loadingsubcats.value = false  // Set loading to false once data is fetched
+	}
+	
+	
+	
+  }
+
+  const changePage = (catid = null,page) => {
+	
+    if (page > 0 && page <= lastPage.value) {
+      fetchSubcats(catid, page) // Pass catid if needed
+    }
+  }
+
+  // Computed property for page numbers
+  const pageNumbers = computed(() => {
+    let pages = []
+    for (let i = 1; i <= lastPage.value; i++) {
+      pages.push(i)
+    }
+    return pages
+  })
+
+  return {
+    subcats,
+    currentPage,
+    lastPage,
+    perPage,
+    totalSubcats,
+    fetchSubcats,
+    changePage,
+    pageNumbers,  
+	loadingsubcats,
+  }
+}

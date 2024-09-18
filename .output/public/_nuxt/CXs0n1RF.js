@@ -1,0 +1,1 @@
+import{k as o,l as r,r as n}from"./BkfL23Qh.js";function m(){const{$api:e}=o(),a=r().public.apiBaseUrl,t=n([]);return{cats:t,fetchCatsCommon:async()=>{try{const s=await e.get(`${a}/admin/cat/common`);t.value=s.data.cats,console.log("cats"+t.value+a)}catch(s){console.error("Error fetching items:",s.response?s.response.data:s.message)}}}}export{m as u};

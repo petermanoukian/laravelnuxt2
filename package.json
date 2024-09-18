@@ -1,0 +1,42 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@pinia/nuxt": "^0.5.1",
+    "@tinymce/tinymce-vue": "^6.0.1",
+    "@tiptap/extension-color": "^2.6.4",
+    "@tiptap/extension-list-item": "^2.6.4",
+    "@tiptap/extension-text-style": "^2.6.4",
+    "@tiptap/pm": "^2.6.2",
+    "@tiptap/starter-kit": "^2.6.2",
+    "@tiptap/vue-2": "^2.6.2",
+    "@tiptap/vue-3": "^2.6.2",
+    "@vueform/multiselect": "^2.6.9",
+    "consola": "^3.2.3",
+    "defu": "^6.1.4",
+    "nuxt": "^3.12.3",
+    "nuxt-tiptap-editor": "^1.2.0",
+    "pinia": "^2.1.7",
+    "quill": "^2.0.2",
+    "vue": "latest",
+    "vue-multiselect": "^3.0.0-beta.3",
+    "vue-select": "^3.20.3"
+  },
+  "overrides": {
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.7"
+  }
+}

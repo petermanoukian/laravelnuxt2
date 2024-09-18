@@ -1,0 +1,58 @@
+/* assets/css/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+ol{
+    list-style: circle;
+    margin: 4px 3px 4px 7px;
+    padding: 5px;
+}
+ ul{
+    list-style: square;
+    margin: 4px 3px 4px 7px;
+    padding: 5px;
+}
+ul.li {
+    list-style-type: square;
+margin-left:6px;list-style: square;
+}
+
+ol.li {
+    list-style-type: square;
+margin-left:6px;list-style: circle;
+}
+
+h1,h2, h3, h4
+{
+	font-weight:600;
+}
+
+h1
+{
+	font-size:21px;
+}
+h2
+{
+	font-size:20px;
+}
+h3
+{
+	font-size:19px;
+}
+h4
+{
+	font-size:18px;
+}
+
+h5
+{
+	font-size:17px;
+}
+h6
+{
+	font-size:17px;
+}
+
+
